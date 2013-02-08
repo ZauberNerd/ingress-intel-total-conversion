@@ -95,6 +95,8 @@ window.setupMap = function() {
   map.on('movestart zoomstart', window.requests.abort);
   map.on('moveend zoomend', function() { window.startRefreshTimeout(500) });
 
+  map.on('click', window.unselectOldPortal);
+
   // run once on init
   window.requestData();
   window.startRefreshTimeout();
