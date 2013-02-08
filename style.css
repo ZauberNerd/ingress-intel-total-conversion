@@ -70,6 +70,11 @@ a:hover {
   z-index: 1000;
 }
 
+.leaflet-control-layers-overlays label.disabled {
+  text-decoration: line-through;
+  cursor: help;
+}
+
 .help {
   cursor: help;
 }
@@ -141,6 +146,7 @@ em {
 #chat > div {
   overflow-x:hidden;
   overflow-y:scroll;
+  height: 100%; /* fallback for Opera which doesn’t support calc */
   height: calc(100% - 4px);
   height: -webkit-calc(100% - 4px);
   height: -moz-calc(100% - 4px);
