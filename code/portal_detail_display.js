@@ -19,22 +19,23 @@ window.renderPortalDetails = function(guid) {
     links[link.isOrigin ? 'outgoing' : 'incoming']++;
   });
   function linkExpl(t) { return '<tt title="↳ incoming links\n↴ outgoing links\n• is meant to be the portal.">'+t+'</tt>'; }
-  var linksText = linkExpl('links')+':'+linkExpl(' ↳ ' + links.incoming+'&nbsp;&nbsp;•&nbsp;&nbsp;'+links.outgoing+' ↴');
+  var linksText = [linkExpl('links'), linkExpl(' ↳ ' + links.incoming+'&nbsp;&nbsp;•&nbsp;&nbsp;'+links.outgoing+' ↴')];
 
   var player = d.captured && d.captured.capturingPlayerId
     ? getPlayerName(d.captured.capturingPlayerId)
     : null;
-  var playerText = player ? 'owner: ' + player : null;
+  var playerText = player ? ['owner', player] : null;
 
   var time = d.captured ? unixTimeToString(d.captured.capturedTime) : null;
-  var sinceText  = time ? 'since: ' + time : null;
+  var sinceText  = time ? ['since', time] : null;
+
+  var linkedFields = ['fields', d.portalV2.linkedFields.length];
 
   // collect and html-ify random data
-  var randDetails = [playerText, sinceText, getRangeText(d), getEnergyText(d), linksText, getAvgResoDistText(d)];
+  var randDetails = [playerText, sinceText, getRangeText(d), getEnergyText(d), linksText, getAvgResoDistText(d), linkedFields, getDestroyAP(d)];
   randDetails = randDetails.map(function(detail) {
     if(!detail) return '';
-    detail = detail.split(':');
-    detail = '<aside>'+detail.shift()+'<span>'+detail.join(':')+'</span></aside>';
+    detail = '<aside>'+detail[0]+'<span>'+detail[1]+'</span></aside>';
     return detail;
   }).join('\n');
 
@@ -68,7 +69,7 @@ window.renderPortalDetails = function(guid) {
         + '<div id="resodetails">'+getResonatorDetails(d)+'</div>'
         + '<div class="linkdetails">'
         + '<aside><a href="'+perma+'">portal link</a></aside>'
-        + '<aside><a onclick="window.reportPortalIssue(\''+getReportIssueInfoText(d)+'\')">report issue</a></aside>'
+        + '<aside><a onclick="window.reportPortalIssue()">report issue</a></aside>'
         + '</div>'
       );
   }

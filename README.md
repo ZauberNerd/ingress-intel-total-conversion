@@ -31,21 +31,15 @@ Features
 - may toggle portals/links/fields
 - hack range (yellow circle) and link range (large red circle) for portals. Click on the range link in the sidebar to zoom to link range.
 - double clicking a portal zooms in and focuses it
-- display of XM and AP rewards for redeemed passcodes by [Dovahkiin](http://bit.ly/mjcode)
-
-
-Missing
--------
-
-(and probably not going to implement it)
-
-- logout link (but you wouldn’t want to *quit*, would you?), privacy link, etc.
+- display of XM and AP rewards for redeemed passcodes
 
 
 Install
 -------
 
-[**INSTALL**](https://raw.github.com/breunigs/ingress-intel-total-conversion/gh-pages/total-conversion-build.user.js)
+Current version is 0.51. See [NEWS.md](https://github.com/breunigs/ingress-intel-total-conversion/blob/gh-pages/NEWS.md) for details.
+
+[**INSTALL**](https://raw.github.com/breunigs/ingress-intel-total-conversion/gh-pages/dist/total-conversion-build.user.js)
 
 
 **Firefox:** Install [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) or [Scriptish](https://addons.mozilla.org/en-US/firefox/addon/scriptish/). Click install link. Install. Reload page.
@@ -66,14 +60,13 @@ Install
 
 
 
-[**INSTALL**](https://raw.github.com/breunigs/ingress-intel-total-conversion/gh-pages/total-conversion-build.user.js)
-
+[**INSTALL**](https://raw.github.com/breunigs/ingress-intel-total-conversion/gh-pages/dist/total-conversion-build.user.js)
 
 
 Contributing
 ------------
 
-Please do! 
+Please do!
 
 (Obviously, Resistance folks must send in complete patches while Enlightenment gals and guys may just open feature request ☺)
 
@@ -81,20 +74,31 @@ Please do!
 Contributors
 ------------
 
-- [integ3r](https://github.com/integ3r)
-- [Bananeweizen](https://github.com/Bananeweizen)
-- [epf](https://github.com/epf)
-- [JasonMillward](https://github.com/JasonMillward)
+[Bananeweizen](https://github.com/Bananeweizen),
+[cmrn](https://github.com/cmrn),
+[epf](https://github.com/epf),
+[integ3r](https://github.com/integ3r),
+[JasonMillward](https://github.com/JasonMillward),
+[mledoze](https://github.com/mledoze),
+[OshiHidra](https://github.com/OshiHidra),
+[phoenixsong6](https://github.com/phoenixsong6),
+[Pirozek](https://github.com/Pirozek),
+[Scrool](https://github.com/Scrool),
+[sorgo](https://github.com/sorgo),
+[Xelio](https://github.com/Xelio),
+[ZauberNerd](https://github.com/ZauberNerd)
 
 
 Hacking
 -------
 
-Execute `./build.rb` or `./build.py` to effectively concatenate `main.js` with all the files in `code/`. It generates the user script which may be installed into your browser. Do not modify `total-conversion-build.user.js` manually, because it is automatically generated. Please don’t include it in patches either, because it makes merging harder. Instead, modify the files in `code/` and have that file built for you.
+Execute `./build.py` to effectively concatenate `main.js` with all the files in `code/`. It generates the user script which may be installed into your browser. Do not modify `ttic-debug.user.js` manually, because it is automatically generated. Instead, modify the files in `code/` and have that file built for you. The files in `dist/` are for release only and should not be touched by you.
 
 `style.css` contains most styles required for the user-script. The extra ones can be found in `code/boot.js#window.setupStyles`. Only CSS rules that depend on config variables should be defined there.
 
-`leaflet_google.js` contains some code to display Google Maps imagery with Leaflet, which is a slightly modified version [of this gist](https://gist.github.com/4504864). The code likely was originally written by Pavel Shramov.
+`external/leaflet_google.js` contains some code to display Google Maps imagery with Leaflet, which is a slightly modified version [of this gist](https://gist.github.com/4504864). The code likely was originally written by Pavel Shramov.
+
+`external/autolink.js` is the same file as distributed by Bryan Woods.
 
 
 My dev setup is like this:
